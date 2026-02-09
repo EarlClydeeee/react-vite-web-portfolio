@@ -43,16 +43,18 @@ export function Projects() {
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={inView ? { opacity: 1, y: 0 } : {}}
-                        className="text-cyan-400 font-semibold uppercase tracking-wider text-sm"
+                        className="text-cyan-300 font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2"
                     >
+                        <span className="w-8 h-[2px] bg-gradient-to-r from-yellow-400 to-cyan-400" />
                         My Work
+                        <span className="w-8 h-[2px] bg-gradient-to-r from-cyan-400 to-lime-400" />
                     </motion.span>
 
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
-                        className="gradient-text-hero text-5xl md:text-7xl font-black mt-4 mb-6"
+                        className="gradient-text-hero text-6xl md:text-8xl font-black mt-4 mb-6 tracking-tighter"
                     >
                         PROJECTS
                     </motion.h2>
@@ -68,60 +70,64 @@ export function Projects() {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.title}
                             initial={{ opacity: 0, y: 30 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: index * 0.1 }}
+                            whileHover={{ y: -8 }}
                             className={`glass-card p-0 overflow-hidden group cursor-pointer ${project.size === 'large' ? 'md:col-span-2' : ''
                                 }`}
                         >
                             <div className="relative overflow-hidden aspect-video">
                                 <motion.img
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ duration: 0.4 }}
+                                    whileHover={{ scale: 1.08 }}
+                                    transition={{ duration: 0.6, ease: 'easeOut' }}
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-full object-cover"
                                 />
 
-                                {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 flex gap-4">
+                                {/* Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+                                {/* Hover Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                    <div className="absolute bottom-0 left-0 right-0 p-8 flex gap-4">
                                         <motion.button
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500 text-black font-semibold text-sm"
+                                            whileHover={{ scale: 1.05, y: -2 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-lime-400 to-cyan-400 text-black font-bold text-sm uppercase tracking-wider shadow-lg shadow-cyan-500/50"
                                         >
                                             <ExternalLink size={16} />
                                             View Live
                                         </motion.button>
                                         <motion.button
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold text-sm border border-white/20"
+                                            whileHover={{ scale: 1.05, y: -2 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md text-white font-bold text-sm border-2 border-white/30 uppercase tracking-wider"
                                         >
                                             <Github size={16} />
-                                            Source
+                                            Code
                                         </motion.button>
                                     </div>
                                 </div>
 
                                 {/* Gradient border effect */}
-                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-cyan-500/50 transition-all duration-300 pointer-events-none" />
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400/60 transition-all duration-500 pointer-events-none rounded-lg" />
                             </div>
 
-                            <div className="p-6">
-                                <h3 className="text-2xl font-bold mb-2 gradient-text">{project.title}</h3>
-                                <p className="text-gray-400 mb-4">{project.description}</p>
+                            <div className="p-8">
+                                <h3 className="text-2xl font-bold mb-3 gradient-text group-hover:scale-105 transition-transform duration-300 inline-block">{project.title}</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
 
                                 <div className="flex flex-wrap gap-2">
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-medium border border-cyan-500/20"
+                                            className="px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-lime-500/10 text-cyan-300 text-xs font-bold border border-cyan-500/30 uppercase tracking-wide hover:border-cyan-400/60 hover:bg-cyan-500/20 transition-all cursor-default"
                                         >
                                             {tag}
                                         </span>
