@@ -64,47 +64,51 @@ export function Navigation() {
                                 e.preventDefault()
                                 scrollToSection('#home')
                             }}
-                            className="text-2xl font-bold gradient-text-hero cursor-pointer"
+                            className="text-xl font-black gradient-text-hero cursor-pointer tracking-tight"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            PORTFOLIO
+                            <span className="inline-flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-cyan-400 animate-pulse" />
+                                PORTFOLIO
+                            </span>
                         </motion.a>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden md:flex items-center gap-10">
                             {navItems.map((item) => (
-                                <a
+                                <motion.a
                                     key={item.href}
                                     href={item.href}
                                     onClick={(e) => {
                                         e.preventDefault()
                                         scrollToSection(item.href)
                                     }}
-                                    className={`relative text-sm font-medium uppercase tracking-wider transition-colors ${activeSection === item.href.slice(1)
-                                            ? 'text-cyan-400'
-                                            : 'text-gray-400 hover:text-white'
+                                    className={`relative text-xs font-bold uppercase tracking-widest transition-all duration-300 ${activeSection === item.href.slice(1)
+                                            ? 'text-cyan-300'
+                                            : 'text-gray-500 hover:text-gray-200'
                                         }`}
+                                    whileHover={{ y: -2 }}
                                 >
                                     {item.label}
                                     {activeSection === item.href.slice(1) && (
                                         <motion.div
                                             layoutId="activeSection"
-                                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-400 to-cyan-400"
+                                            className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-400 via-lime-400 to-cyan-400 rounded-full"
                                             transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                                         />
                                     )}
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
 
                         {/* CTA Button (Desktop) */}
                         <motion.button
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            className="hidden md:block btn btn-primary"
+                            className="hidden md:block btn btn-primary text-xs"
                         >
-                            Hire Me
+                            Let's Work
                         </motion.button>
 
                         {/* Mobile Menu Toggle */}

@@ -73,22 +73,24 @@ export function About() {
                             initial={{ opacity: 0 }}
                             animate={inView ? { opacity: 1 } : {}}
                             transition={{ delay: 0.3 }}
-                            className="text-cyan-400 font-semibold uppercase tracking-wider text-sm"
+                            className="text-cyan-300 font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2"
                         >
+                            <span className="w-8 h-[2px] bg-gradient-to-r from-yellow-400 to-cyan-400" />
                             About Me
                         </motion.span>
 
-                        <h2 ref={titleRef} className="gradient-text-hero text-5xl md:text-6xl font-black my-6">
-                            Passionate Developer
+                        <h2 ref={titleRef} className="gradient-text-hero text-5xl md:text-7xl font-black my-6 tracking-tighter leading-tight">
+                            PASSIONATE
+                            <span className="block">DEVELOPER</span>
                         </h2>
 
-                        <div className="space-y-4 text-gray-400 leading-relaxed">
+                        <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={inView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ delay: 0.5 }}
                             >
-                                I'm a creative developer specialized in building stunning digital experiences that
+                                I'm a creative developer specialized in building <span className="text-cyan-300 font-semibold">stunning digital experiences</span> that
                                 combine beautiful design with cutting-edge technology. With a passion for modern
                                 web development, I transform ideas into reality.
                             </motion.p>
@@ -98,14 +100,14 @@ export function About() {
                                 animate={inView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ delay: 0.7 }}
                             >
-                                My expertise spans across frontend development, UI/UX design, and 3D web
+                                My expertise spans across <span className="text-lime-300 font-semibold">frontend development, UI/UX design</span>, and 3D web
                                 experiences. I believe in creating products that not only look amazing but also
                                 provide seamless user experiences.
                             </motion.p>
                         </div>
 
                         {/* Stats */}
-                        <div className="grid grid-cols-2 gap-6 mt-12">
+                        <div className="grid grid-cols-2 gap-6 mt-14">
                             {stats.map((stat, index) => {
                                 const Icon = stat.icon
                                 return (
@@ -114,14 +116,15 @@ export function About() {
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={inView ? { opacity: 1, scale: 1 } : {}}
                                         transition={{ delay: 0.9 + index * 0.1 }}
-                                        className="glass-card p-6 text-center group hover:border-cyan-500/50 transition-all"
+                                        whileHover={{ scale: 1.05, y: -4 }}
+                                        className="glass-card p-8 text-center group hover:border-cyan-400/60 transition-all cursor-default"
                                     >
-                                        <Icon className="w-8 h-8 mx-auto mb-3 text-cyan-400 group-hover:scale-110 transition-transform" />
-                                        <div className="text-3xl font-bold gradient-text mb-1">
+                                        <Icon className="w-10 h-10 mx-auto mb-4 text-cyan-300 group-hover:scale-110 group-hover:text-lime-300 transition-all" />
+                                        <div className="text-4xl font-black gradient-text mb-2">
                                             <span id={`stat-${index}`}>0</span>
                                             {stat.suffix}
                                         </div>
-                                        <div className="text-sm text-gray-500">{stat.label}</div>
+                                        <div className="text-xs text-gray-400 uppercase tracking-wider font-semibold">{stat.label}</div>
                                     </motion.div>
                                 )
                             })}

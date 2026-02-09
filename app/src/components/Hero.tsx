@@ -36,20 +36,22 @@ export function Hero() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="mb-6"
+                        className="mb-8"
                     >
-                        <span className="inline-block px-6 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-semibold tracking-wider uppercase backdrop-blur-sm">
-                            Welcome to my portfolio
+                        <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-cyan-400/40 bg-cyan-400/5 text-cyan-300 text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-lg shadow-cyan-500/10">
+                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                            Portfolio 2026
                         </span>
                     </motion.div>
 
                     {/* Main Heading with Bold Gradient */}
                     <h1
                         ref={titleRef}
-                        className="gradient-text-hero text-[clamp(3rem,12vw,8rem)] font-black leading-[0.9] mb-6"
+                        className="gradient-text-hero text-[clamp(3.5rem,15vw,12rem)] font-black leading-[0.85] mb-8 tracking-tighter"
                         style={{ perspective: '1000px' }}
                     >
-                        CREATIVE DESIGNER
+                        <span className="block">CREATIVE</span>
+                        <span className="block">DESIGNER</span>
                     </h1>
 
                     {/* Subtitle */}
@@ -58,9 +60,10 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.2 }}
-                        className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-12 leading-relaxed"
+                        className="text-xl md:text-3xl text-gray-300 max-w-3xl mb-16 leading-relaxed font-light"
                     >
-                        Crafting stunning digital experiences with modern design and cutting-edge technology
+                        Crafting stunning digital experiences with
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-cyan-300 font-semibold"> modern design</span> and cutting-edge technology
                     </motion.p>
 
                     {/* CTA Buttons */}
@@ -68,13 +71,23 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.5 }}
-                        className="flex flex-wrap gap-4 justify-center"
+                        className="flex flex-wrap gap-5 justify-center items-center"
                     >
-                        <button className="btn btn-primary group">
+                        <motion.button 
+                            className="btn btn-primary group"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
                             <span>View Projects</span>
                             <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                        </button>
-                        <button className="btn btn-secondary">Get In Touch</button>
+                        </motion.button>
+                        <motion.button 
+                            className="btn btn-secondary group"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            <span>Get In Touch</span>
+                        </motion.button>
                     </motion.div>
 
                     {/* Scroll Indicator */}
@@ -85,14 +98,15 @@ export function Hero() {
                         onClick={scrollToContent}
                         className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer group"
                         aria-label="Scroll down"
+                        whileHover={{ scale: 1.1 }}
                     >
-                        <div className="flex flex-col items-center gap-2">
-                            <span className="text-sm text-gray-500 uppercase tracking-wider">Scroll</span>
-                            <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex items-start justify-center p-2">
+                        <div className="flex flex-col items-center gap-3">
+                            <span className="text-xs text-gray-400 uppercase tracking-widest font-bold group-hover:text-cyan-300 transition-colors">Scroll</span>
+                            <div className="w-7 h-11 border-2 border-gray-600 group-hover:border-cyan-400/60 rounded-full flex items-start justify-center p-2 transition-all">
                                 <motion.div
-                                    animate={{ y: [0, 12, 0] }}
+                                    animate={{ y: [0, 14, 0] }}
                                     transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                                    className="w-1.5 h-1.5 bg-cyan-400 rounded-full"
+                                    className="w-1.5 h-1.5 bg-gradient-to-b from-lime-400 to-cyan-400 rounded-full shadow-lg shadow-cyan-400/50"
                                 />
                             </div>
                         </div>
